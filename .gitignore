@@ -1,0 +1,12 @@
+# Ignorar dataset
+dataset_dividido/
+
+# Ignorar modelos grandes
+*.h5
+*.keras
+
+# Archivos temporales
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
