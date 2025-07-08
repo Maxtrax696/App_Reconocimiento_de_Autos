@@ -82,10 +82,10 @@ loss, accuracy = model.evaluate(test_generator)
 print(f"\nEvaluación en test - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
 
 # Guardar modelo
-model.save("modelo_autos.h5")
-print("Modelo guardado como 'modelo_autos.h5'")
+model.save(os.path.join("models", "modelo_autos.keras"))
+print("Modelo guardado como 'modelo_autos.keras'")
 
-# Guardar historial como CSV
-hist_df = pd.DataFrame(history.history)
+# Convertir todos los valores a float (evita errores de serialización)
+hist_df = pd.DataFrame({k: [float(vv) for vv in v] for k, v in history.history.items()})
 hist_df.to_csv("historial_entrenamiento.csv", index=False)
 print("Historial guardado como 'historial_entrenamiento.csv'")
